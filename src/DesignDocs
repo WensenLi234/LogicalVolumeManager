@@ -1,0 +1,64 @@
+Volume:
+- Instance Variables:
+    - String name: The name of the volume
+    - UUID uuid: The UUID of the volume
+- Constructor:
+    Parameters:
+        - String name
+    Function:
+        - Sets this.name to name, then sets uuid to UUID.randomUUID()
+- Methods:
+    - Getter method for each Instance variable.
+
+Drive:
+- Inherits Volume
+- Instance Variables:
+    - double space: The space of the Drive in gigabytes
+- Constructor:
+    Parameters:
+    - String name
+    - double space
+    Function:
+    - Calls the constructor of the Volume class with name as name, then sets this.space to space.
+- Methods:
+    - Getter method for each Instance variable.
+
+PhysicalVolume:
+- Inherits Volume
+- Instance Variables:
+    - String name
+    - Drive drive
+- Constructor:
+    Parameters:
+    - String name
+    - Drive drive
+    Function:
+    - Calls the constructor of Volume with name as name, then sets this.drive to drive
+- Methods:
+    - Getter method for each Instance variable.
+
+LogicalVolume:
+- Inherits Drive
+- Instance Variables:
+    - VolumeGroup group
+- Constructor:
+    - Parameters:
+    - String name
+    - double space
+    - VolumeGroup group
+    Function:
+    - Calls the constructor of Drive with name as name, space as space, then sets this.group to group.
+- Methods:
+    - Getter method for each Instance variable.
+
+VolumeGroup:
+- Inherits Volume
+- Instance Variables:
+    - PhysicalVolume[] physicalArr
+    - LogicalVolume[] logicalArr
+- Constructor:
+    - Parameters:
+    - String name
+    - PhysicalVolume[] physicalArr
+    Function:
+    - Calls the constructor of Volume with name as name, then 
