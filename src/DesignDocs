@@ -55,10 +55,11 @@ VolumeGroup:
 - Inherits Volume
 - Instance Variables:
     - PhysicalVolume[] physicalArr
-    - LogicalVolume[] logicalArr
-- Constructor:
+    - ArrayList<LogicalVolume> logicalArr
+- Constructors:
     - Parameters:
     - String name
     - PhysicalVolume[] physicalArr
     Function:
-    - Calls the constructor of Volume with name as name, then 
+    - Calls the constructor of Volume with name as name, then sets this.physicalArr to physicalArr,
+    and finally sets logicalArr to new ArrayList<LogicalVolume>()
