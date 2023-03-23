@@ -26,7 +26,6 @@ Drive:
 PhysicalVolume:
 - Inherits Volume
 - Instance Variables:
-    - String name
     - Drive drive
 - Constructor:
     Parameters:
@@ -54,12 +53,33 @@ LogicalVolume:
 VolumeGroup:
 - Inherits Volume
 - Instance Variables:
-    - PhysicalVolume[] physicalArr
+    - ArrayList<PhysicalVolume> physicalArr
     - ArrayList<LogicalVolume> logicalArr
 - Constructors:
     - Parameters:
     - String name
-    - PhysicalVolume[] physicalArr
+    - ArrayList<PhysicalVolume> physicalArr
     Function:
     - Calls the constructor of Volume with name as name, then sets this.physicalArr to physicalArr,
     and finally sets logicalArr to new ArrayList<LogicalVolume>()
+- Methods:
+    - public double getTotalSpace
+        - Returns the sum of the space of each PhysicalVolume in physicalArr
+    - public double getLogicalSpace
+        - Returns the sum of the space in each LogicalVolume in logicalArr
+    - public void addPhysicalVolume
+        - Parameters:
+        - PhysicalVolume volume
+        - Function:
+        - Adds volume to physicalArr
+    - public void addLogicalVolume
+        - Precondition: getTotalSpace() - getLogicalSpace() is greater than or equal to volume.getSpace()
+        - Parameters:
+        - LogicalVolume volume
+        - Function:
+        - Adds volume to logicalArr
+    public void removeLogicalVolume
+        - Parameters
+        - int index
+        - Function:
+        - Removes the volume at index index of logicalArr
