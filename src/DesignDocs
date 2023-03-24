@@ -16,12 +16,17 @@ Drive:
     - double space: The space of the Drive in gigabytes
 - Constructor:
     Parameters:
-    - String name
-    - double space
+        - String name
+        - double space
     Function:
-    - Calls the constructor of the Volume class with name as name, then sets this.space to space.
+        - Calls the constructor of the Volume class with name as name, then initializes this.space as space.
 - Methods:
     - Getter method for each Instance variable.
+    - public String toString
+    - Parameters:
+    - Function:
+        - returns the value of each instance variable available (including the superclass variables) separated
+        by a |
 
 PhysicalVolume:
 - Inherits Volume
@@ -29,12 +34,17 @@ PhysicalVolume:
     - Drive drive
 - Constructor:
     Parameters:
-    - String name
-    - Drive drive
+        - String name
+        - Drive drive
     Function:
-    - Calls the constructor of Volume with name as name, then sets this.drive to drive
+        - Calls the constructor of Volume with name as name, then initializes this.drive as drive
 - Methods:
     - Getter method for each Instance variable.
+    - public String toString
+    - Parameters:
+    - Function:
+        - returns the value of each instance variable available (including the superclass variables) separated
+        by a |
 
 LogicalVolume:
 - Inherits Drive
@@ -42,13 +52,18 @@ LogicalVolume:
     - VolumeGroup group
 - Constructor:
     - Parameters:
-    - String name
-    - double space
-    - VolumeGroup group
+        - String name
+        - double space
+        - VolumeGroup group
     Function:
-    - Calls the constructor of Drive with name as name, space as space, then sets this.group to group.
+        - Calls the constructor of Drive with name as name, space as space, then initializes this.group to group.
 - Methods:
     - Getter method for each Instance variable.
+    - public String toString
+    - Parameters:
+    - Function:
+        - returns the value of each instance variable available (including the superclass variables) separated
+        by a |
 
 VolumeGroup:
 - Inherits Volume
@@ -57,11 +72,11 @@ VolumeGroup:
     - ArrayList<LogicalVolume> logicalArr
 - Constructors:
     - Parameters:
-    - String name
-    - ArrayList<PhysicalVolume> physicalArr
+        - String name
+        - ArrayList<PhysicalVolume> physicalArr
     Function:
-    - Calls the constructor of Volume with name as name, then sets this.physicalArr to physicalArr,
-    and finally sets logicalArr to new ArrayList<LogicalVolume>()
+        - Calls the constructor of Volume with name as name, then sets this.physicalArr to physicalArr,
+        and finally initializes logicalArr to new ArrayList<LogicalVolume>()
 - Methods:
     - public double getTotalSpace
         - Returns the sum of the space of each PhysicalVolume in physicalArr
@@ -69,17 +84,53 @@ VolumeGroup:
         - Returns the sum of the space in each LogicalVolume in logicalArr
     - public void addPhysicalVolume
         - Parameters:
-        - PhysicalVolume volume
+            - PhysicalVolume volume
         - Function:
-        - Adds volume to physicalArr
+            - Adds volume to physicalArr
+    - public void addPhysicalVolume
+            - Parameters:
+            - PhysicalVolume volume
+                - int index
+            - Function:
+                - Adds volume to index index of physicalArr
     - public void addLogicalVolume
         - Precondition: getTotalSpace() - getLogicalSpace() is greater than or equal to volume.getSpace()
         - Parameters:
-        - LogicalVolume volume
+            - LogicalVolume volume
         - Function:
-        - Adds volume to logicalArr
-    public void removeLogicalVolume
-        - Parameters
+            - Adds volume to logicalArr
+    - public void addLogicalVolume
+            - Precondition: getTotalSpace() - getLogicalSpace() is greater than or equal to volume.getSpace()
+            - Parameters:
+                - LogicalVolume volume
+                - int index
+            - Function:
+                - Adds volume to index index of logicalArr
+    - public void removeLogicalVolume
+        - Parameters:
         - int index
         - Function:
         - Removes the volume at index index of logicalArr
+    - Getter methods for each instance variable
+
+LogicalVolumeManager:
+Instance Variables:
+    - ArrayList<VolumeGroup> volumeGroups;
+    - ArrayList<Drive> drives;
+Constructor:
+    - Parameters:
+    - Function:
+        - Initializes volumeGroups as new ArrayList<VolumeGroup>(), and drives as new ArrayList<Drive>()
+Methods:
+    - public void addHardDrive
+    - Parameters:
+        - Drive drive
+    Function:
+        - Adds drive to drives
+    - public void addVolumeGroup
+    - Parameters:
+        - VolumeGroup group
+    - Function:
+        - Adds group to VolumeGroup
+    - public
+    - Getter methods for each instance variable.
